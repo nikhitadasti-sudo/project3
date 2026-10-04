@@ -35,9 +35,8 @@ evaluator_llm = ChatOpenAI(
 # connect to the database in read-only mode
 @st.cache_resource
 def get_db_connection():
-    conn = sqlite3.connect("file:credit_risk_portfolio.db?mode=ro", uri=True)
+    conn = sqlite3.connect("credit_risk_portfolio.db", check_same_thread=False)
     return conn
-
 conn = get_db_connection()
 
 # database schema
